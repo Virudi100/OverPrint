@@ -219,11 +219,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1447485315 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 1223668816309268903, guid: 617c8dedee4351440964e2a87b31b66d, type: 3}
-  m_PrefabInstance: {fileID: 1223668817314738125}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,14 +484,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCuboide
       objectReference: {fileID: 0}
-    - target: {fileID: 1223668816309268903, guid: 617c8dedee4351440964e2a87b31b66d, type: 3}
-      propertyPath: m_Mass
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6994824769869196934, guid: 617c8dedee4351440964e2a87b31b66d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1447485315}
     - target: {fileID: 6994824769869196934, guid: 617c8dedee4351440964e2a87b31b66d, type: 3}
       propertyPath: playerControls.m_Id
       value: ae17083b-e8d6-4bd1-8378-781ced5408fe

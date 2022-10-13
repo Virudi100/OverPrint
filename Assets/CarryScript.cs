@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarryScript : MonoBehaviour
 {
-    public GameObject selectedGO;
+    [HideInInspector] public GameObject selectedGO;
 
     private void OnTriggerEnter(Collider other)
     {

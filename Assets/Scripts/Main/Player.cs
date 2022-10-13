@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     private float moveSpeed = 3f;
     private float rotationSpeed = 720f;
     [SerializeField] private CarryScript cScript;
-    [SerializeField] private bool isCarring = false;
+    private bool isCarring = false;
     [SerializeField] private GameObject anchorCarry;
-    [SerializeField] private GameObject newPrefab;
+    private GameObject newPrefab;
 
     // Start is called before the first frame update
     void Start()

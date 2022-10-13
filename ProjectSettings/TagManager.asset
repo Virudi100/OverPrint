@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MovingObject
   - Crate
+  - TrashCan
   layers:
   - Default
   - TransparentFX

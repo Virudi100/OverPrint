@@ -12,12 +12,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject anchorCarry;
     private GameObject newPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");

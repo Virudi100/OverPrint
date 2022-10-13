@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class CarryScript : MonoBehaviour
 {
-    private Material baseMat;
-    [SerializeField] private Material highlightMat;
-    [HideInInspector] public GameObject selectedGO;
+    public GameObject selectedGO;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("MovingObject"))
+        if(other.CompareTag("MovingObject") || other.CompareTag("Crate"))
         {
             selectedGO = other.gameObject;
-            baseMat = other.gameObject.GetComponent<MeshRenderer>().material;
-            other.gameObject.GetComponent<MeshRenderer>().material = highlightMat;
-        }    
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("MovingObject"))
+        {
+            selectedGO = other.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("MovingObject"))
+        if (other.CompareTag("MovingObject") || other.CompareTag("Crate"))
         {
             selectedGO = null;
-            other.gameObject.GetComponent<MeshRenderer>().material = baseMat;
-            baseMat = null;
         }
     }
 }

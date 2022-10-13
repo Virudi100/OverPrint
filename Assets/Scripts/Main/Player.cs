@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
     private float moveSpeed = 3f;
     private float rotationSpeed = 720f;
     [SerializeField] private CarryScript cScript;
-    private bool isCarring = false;
+    [SerializeField] private bool isCarring = false;
     [SerializeField] private GameObject anchorCarry;
+    [SerializeField] private GameObject newPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -36,22 +37,42 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        if (cScript.selectedGO != null && Input.GetKeyDown(KeyCode.E))
+        if (cScript.selectedGO != null && cScript.selectedGO.CompareTag("MovingObject") && Input.GetKeyDown(KeyCode.E))
         {
             if (isCarring == false)
             {
                 cScript.selectedGO.transform.SetParent(gameObject.transform);
                 cScript.selectedGO.transform.position = anchorCarry.transform.position;
                 cScript.selectedGO.GetComponent<Rigidbody>().useGravity = false;
+                cScript.selectedGO.GetComponent<Rigidbody>().isKinematic = true;
                 isCarring = true;
             }
             else if(isCarring == true)
             {
-                isCarring = false;
                 cScript.selectedGO.GetComponent<Rigidbody>().useGravity = true;
+                cScript.selectedGO.GetComponent<Rigidbody>().isKinematic = false;
                 cScript.selectedGO.transform.parent = null;
+                isCarring = false;
             }
-            
+        }
+        else if(cScript.selectedGO != null && cScript.selectedGO.CompareTag("Crate") && Input.GetKeyDown(KeyCode.E))
+        {
+            if (isCarring == false)
+            {
+                newPrefab = Instantiate(cScript.selectedGO.GetComponent<ComposantCrate>().prefabGO, gameObject.transform.position, Quaternion.identity);
+                newPrefab.transform.SetParent(gameObject.transform);
+                newPrefab.transform.position = anchorCarry.transform.position;
+                newPrefab.GetComponent<Rigidbody>().useGravity = false;
+                newPrefab.GetComponent<Rigidbody>().isKinematic = true;
+                isCarring = true;
+            }
+            else if (isCarring == true)
+            {
+                newPrefab.GetComponent<Rigidbody>().useGravity = true;
+                newPrefab.GetComponent<Rigidbody>().isKinematic = false;
+                newPrefab.transform.parent = null;
+                isCarring = false;
+            }
         }
     }
 }

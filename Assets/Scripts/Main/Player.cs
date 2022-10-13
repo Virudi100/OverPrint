@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
         transform.Translate(movementDirection * moveSpeed * Time.deltaTime, Space.World);
 
-        if(movementDirection != Vector3.zero)
+        if (movementDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
                 cScript.selectedGO.GetComponent<Rigidbody>().isKinematic = true;
                 isCarring = true;
             }
-            else if(isCarring == true)
+            else if (isCarring == true)
             {
                 cScript.selectedGO.GetComponent<Rigidbody>().useGravity = true;
                 cScript.selectedGO.GetComponent<Rigidbody>().isKinematic = false;
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
                 isCarring = false;
             }
         }
-        else if(cScript.selectedGO != null && cScript.selectedGO.CompareTag("Crate") && Input.GetKeyDown(KeyCode.E))
+        else if (cScript.selectedGO != null && cScript.selectedGO.CompareTag("Crate") && Input.GetKeyDown(KeyCode.E))
         {
             if (isCarring == false)
             {

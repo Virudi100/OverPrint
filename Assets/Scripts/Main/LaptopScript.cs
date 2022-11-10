@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LaptopScript : MonoBehaviour
 {
-    private bool isDll;
+    [SerializeField] private bool isDll = false;
     [SerializeField] private GameObject printingSchema;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && isDll == false)
         {
@@ -29,6 +29,7 @@ public class LaptopScript : MonoBehaviour
             i++;
             yield return new WaitForSeconds(1);
         }
+        GameObject sdCard = Instantiate(printingSchema,new Vector3(transform.localPosition.x,transform.localPosition.y,transform.localPosition.z + 0.5f),Quaternion.identity);
         isDll = false;
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Crate
   - TrashCan
   - Laptop
+  - Objectif
   layers:
   - Default
   - TransparentFX
